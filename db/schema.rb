@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_07_153823) do
+ActiveRecord::Schema.define(version: 2023_02_07_154654) do
+
+  create_table "open_ai_completion_usage_choices", force: :cascade do |t|
+    t.integer "open_ai_completion_usage_id", null: false
+    t.string "text", null: false
+    t.integer "index", null: false
+    t.float "logprobs"
+    t.string "finish_reason", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["open_ai_completion_usage_id"], name: "index_usage_choices_on_usage_id"
+  end
+
+  create_table "open_ai_completion_usages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "request_model", null: false
+    t.string "request_prompt", default: "<|endoftext|>", null: false
+    t.string "request_suffix"
+    t.integer "request_max_tokens", default: 16, null: false
+    t.float "request_temperature", default: 1.0, null: false
+    t.float "request_top_p", default: 1.0, null: false
+    t.integer "request_n", default: 1, null: false
+    t.boolean "request_stream", default: false, null: false
+    t.integer "request_logprobs"
+    t.boolean "request_echo", default: false, null: false
+    t.string "request_stop"
+    t.float "request_presence_penalty", default: 0.0, null: false
+    t.float "request_frequency_penalty", default: 0.0, null: false
+    t.integer "request_best_of", default: 1, null: false
+    t.string "response_id", null: false
+    t.string "response_object", null: false
+    t.bigint "response_created", null: false
+    t.string "response_model", null: false
+    t.integer "response_usage_prompt_tokens", null: false
+    t.integer "response_usage_completion_tokens", null: false
+    t.integer "response_usage_total_tokens", null: false
+    t.float "cost", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_open_ai_completion_usages_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false

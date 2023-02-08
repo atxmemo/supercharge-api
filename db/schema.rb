@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_07_154654) do
+ActiveRecord::Schema.define(version: 2023_02_08_030739) do
+
+  create_table "api_keys", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "token", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"user\"", name: "index_api_keys_on_user"
+    t.index ["token"], name: "index_api_keys_on_token"
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
 
   create_table "open_ai_completion_usage_choices", force: :cascade do |t|
     t.integer "open_ai_completion_usage_id", null: false

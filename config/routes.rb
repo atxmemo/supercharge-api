@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :api_keys, only: [:create, :destroy, :index]
-      resources :open_ai_completion_usages
+      resources :open_ai_completion_usages, only: [:create, :index]
     end
   end
 end

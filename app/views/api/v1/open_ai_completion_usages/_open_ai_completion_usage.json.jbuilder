@@ -1,4 +1,4 @@
-json.extract! open_ai_completions_usage,
+json.extract! open_ai_completion_usage,
   :request_model,
   :request_prompt,
   :request_suffix,
@@ -22,10 +22,10 @@ json.extract! open_ai_completions_usage,
   :response_usage_total_tokens,
   :cost
 
-# open_ai_completions_usage choices
-json.open_ai_completions_usage_choices do 
-  open_ai_completions_usage.open_ai_completions_usage_choices.each do |open_ai_completions_usage_choices|
-    json.extract! open_ai_completions_usage_choices, 
+# open_ai_completion_usage choices
+json.open_ai_completion_usage_choices do 
+  open_ai_completion_usage.open_ai_completion_usage_choices.each do |open_ai_completion_usage_choices|
+    json.extract! open_ai_completion_usage_choices, 
       :text,
       :index,
       :logprobs,

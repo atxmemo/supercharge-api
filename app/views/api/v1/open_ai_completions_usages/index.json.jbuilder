@@ -1,1 +1,0 @@
-json.array! @open_ai_completions_usages, partial: 'open_ai_completions_usage', as: :open_ai_completions_usage

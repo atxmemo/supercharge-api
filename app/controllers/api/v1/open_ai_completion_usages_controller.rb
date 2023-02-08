@@ -1,13 +1,13 @@
 class Api::V1::OpenAiCompletionUsagesController < ApplicationController
-  
-  before_action :find_open_ai_completion_usage, only: [:show, :update, :destroy]
+
+  before_action :authenticate_with_api_key!, only: [:index, :create]
 
   def index
-    @open_ai_completion_usages = OpenAiCompletionUsage.all
+    @open_ai_completion_usages = @user.open_ai_completion_usages
   end
 
   def create
-    @open_ai_completion_usage = OpenAiCompletionUsage.new(open_ai_completion_usage_params)
+    @open_ai_completion_usage = @user.open_ai_completion_usages.new(open_ai_completion_usage_params)
 
     if @open_ai_completion_usage.save
       render :show
@@ -17,24 +17,7 @@ class Api::V1::OpenAiCompletionUsagesController < ApplicationController
     end
   end
 
-  def update
-    if @open_ai_completion_usage.update(open_ai_completion_usage_params)
-      render :show
-    else
-      render json: { errors: @open_ai_completion_usage.errors.full_messages }, 
-      status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @open_ai_completion_usage.destroy
-  end
-
   private
-
-  def find_open_ai_completion_usage
-    @open_ai_completion_usage = OpenAiCompletionUsage.find(params[:id])
-  end
 
   def open_ai_completion_usage_params
     params.require(:open_ai_completion_usage)

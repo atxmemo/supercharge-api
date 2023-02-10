@@ -20,7 +20,8 @@ json.extract! open_ai_completion_usage,
   :response_usage_prompt_tokens,
   :response_usage_completion_tokens,
   :response_usage_total_tokens,
-  :cost
+  :cost,
+  :user_identifier
 
 # open_ai_completion_usage choices
 json.open_ai_completion_usage_choices do 

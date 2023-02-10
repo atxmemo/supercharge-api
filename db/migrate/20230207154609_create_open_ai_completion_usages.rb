@@ -24,6 +24,7 @@ class CreateOpenAiCompletionUsages < ActiveRecord::Migration[7.0]
       t.integer :response_usage_completion_tokens, null: false
       t.integer :response_usage_total_tokens, null: false
       t.float :cost, null: false
+      t.string :user_identifier, null: false
       t.timestamps
     end
   end

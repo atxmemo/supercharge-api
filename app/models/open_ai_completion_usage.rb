@@ -15,6 +15,8 @@ class OpenAiCompletionUsage < ApplicationRecord
   validates :response_usage_prompt_tokens, presence: true
   validates :response_usage_completion_tokens, presence: true
   validates :response_usage_total_tokens, presence: true
+  validates :user_identifier, presence: true
+  
 
   MODEL_PRICING = {
     ada: 0.0000004,

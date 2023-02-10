@@ -43,7 +43,7 @@ class Api::V1::OpenAiCompletionUsagesController < ApplicationController
         :response_usage_prompt_tokens,
         :response_usage_completion_tokens,
         :response_usage_total_tokens,
-        :user_id,
+        :user_identifier,
         :open_ai_completion_usage_choices_attributes => [
           :text, 
           :index, 

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2023_02_08_030739) do
     t.integer "response_usage_completion_tokens", null: false
     t.integer "response_usage_total_tokens", null: false
     t.float "cost", null: false
+    t.string "user_identifier", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_open_ai_completion_usages_on_user_id"
